@@ -26,7 +26,7 @@ var Twitter = require('twitter');
  *
  * @param {function} [options.twitter.stream=function(err, data){}] callback function on a stream 'data' event for the returned {@link  https://www.npmjs.com/package/twitter#streaming-api Twitter stream}.
  *
- * * `err` is the {@link Error} object
+ * * `err` is the {@link Error} object (unused in this case)
  * * `data` is in the form of `{twitter: {stream: stream, tweets: Object}}`
  * * `data.twitter.stream` is the {@link https://www.npmjs.com/package/twitter#streaming-api twitter stream}
  * * `data.twitter.tweets` are  the {@link https://www.npmjs.com/package/twitter tweets} in JSON format
@@ -159,7 +159,7 @@ module.exports = options => {
 			
 			// (twitter_stream_cb) Pass stream and tweets to callback
 			var data = {twitter: {stream: stream, tweets: tweets}};
-			options.twitter.stream(err, data);
+			options.twitter.stream(undefined, data);
 		});
 		return stream;
 	} else {

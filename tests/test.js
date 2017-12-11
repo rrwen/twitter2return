@@ -1,6 +1,8 @@
 // Richard Wen
 // rrwen.dev@gmail.com
 
+require('dotenv').config();
+
 // (packages) Package dependencies
 var fs = require('fs');
 var moment = require('moment');
@@ -33,22 +35,34 @@ test('Tests for ' + json.name + ' (' + json.version + ')', t => {
 	t.comment('Date: ' + moment().format('YYYY-MM-DD hh:mm:ss'));
 	t.comment('Dependencies: ' + testedPackages.join(', '));
 	t.comment('Developer: ' + devPackages.join(', '));
-
-	// (test_pass) Pass a test
-	t.pass('(MAIN) test pass');
-
-	// (test_equal) Equal test
-	var actual = 1;
-	var expected = 1;
-	t.equal(actual, expected, '(A) Equal test');
-
-	// (test_deepequal) Deep equal test
-	var actual = {a: 1, b: {c: 2}, d: [3]};
-	var expected = {a: 1, b: {c: 2}, d: [3]};
-	t.deepEquals(actual, expected, '(B) Deep equal test');
-
-	// (test_fail) Fail a test
-	// t.fail('(MAIN) test fail');
-
+	
+	options = {twitter: {}};
+	
+	// (test_rest) Search for keyword 'twitter' in path 'GET search/tweets'
+	options.twitter.method = 'get';
+	options.twitter.path = 'search/tweets';
+	options.twitter.params = {q: 'twitter'};
+	options.jsonata = 'statuses';
+	twitter2return(options)
+		.then(data => {
+			t.pass('(MAIN) REST GET search/tweets');
+		}).catch(err => {
+			t.fail('(MAIN) REST GET search/tweets: ' + err.message);
+		});
+		
+	// (test_stream) Track keyword 'twitter' in path 'POST statuses/filter'
+	options.twitter.method = 'stream';
+	options.twitter.path = 'statuses/filter';
+	options.twitter.params = {track: 'twitter'};
+	options.twitter.stream = function(err, data) {
+		if (err) {console.error(err)};
+		t.pass('(MAIN) Stream POST statuses/tweets');
+		process.exit(0);
+	};
+	var stream = twitter2return(options);
+	stream.on('error', function(error) {
+		t.fail('(MAIN) Stream POST statuses/tweets: ' + error.message);
+		process.exit(1);
+	});
 	t.end();
 });
