@@ -42,27 +42,55 @@ test('Tests for ' + json.name + ' (' + json.version + ')', t => {
 	options.twitter.method = 'get';
 	options.twitter.path = 'search/tweets';
 	options.twitter.params = {q: 'twitter'};
-	options.jsonata = 'statuses';
 	twitter2return(options)
 		.then(data => {
 			t.pass('(MAIN) REST GET search/tweets');
-		}).catch(err => {
+			
+			// (test_rest_jsonata) Search for keyword 'twitter' in path 'GET search/tweets' with 'statuses' filter
+			options.twitter.method = 'get';
+			options.twitter.path = 'search/tweets';
+			options.twitter.params = {q: 'twitter'};
+			options.jsonata = 'statuses';
+			return twitter2return(options)
+				.then(data => {
+					t.pass('(MAIN) REST GET search/tweets with statuses jsonata filter');
+				}).catch(err => {
+					t.fail('(MAIN) REST GET search/tweets  with statuses jsonata filter: ' + err.message);
+				});
+		}).then(data => {
+			
+			// (test_stream) Track keyword 'twitter' in path 'POST statuses/filter'
+			options.twitter.method = 'stream';
+			options.twitter.path = 'statuses/filter';
+			options.twitter.params = {track: 'twitter'};
+			options.twitter.stream = function(err, data) {
+				if (err) {console.error(err)};
+				t.pass('(MAIN) Stream POST statuses/tweets');
+				
+				// (test_stream_jsonata) Track keyword 'twitter' in path 'POST statuses/filter' with 'statuses' filter
+				options.twitter.method = 'stream';
+				options.twitter.path = 'statuses/filter';
+				options.twitter.params = {track: 'twitter'};
+				options.jsonata = 'statuses';
+				options.twitter.stream = function(err, data) {
+					if (err) {console.error(err)};
+					t.pass('(MAIN) Stream POST statuses/tweets  with statuses jsonata filter');
+					process.exit(0);
+				};
+				var stream = twitter2return(options);
+				stream.on('error', function(error) {
+					t.fail('(MAIN) Stream POST statuses/tweets  with statuses jsonata filter: ' + error.message);
+					process.exit(1);
+				});
+			};
+			var stream = twitter2return(options);
+			stream.on('error', function(error) {
+				t.fail('(MAIN) Stream POST statuses/tweets: ' + error.message);
+				process.exit(1);
+			});
+		})
+		.catch(err => {
 			t.fail('(MAIN) REST GET search/tweets: ' + err.message);
 		});
-		
-	// (test_stream) Track keyword 'twitter' in path 'POST statuses/filter'
-	options.twitter.method = 'stream';
-	options.twitter.path = 'statuses/filter';
-	options.twitter.params = {track: 'twitter'};
-	options.twitter.stream = function(err, data) {
-		if (err) {console.error(err)};
-		t.pass('(MAIN) Stream POST statuses/tweets');
-		process.exit(0);
-	};
-	var stream = twitter2return(options);
-	stream.on('error', function(error) {
-		t.fail('(MAIN) Stream POST statuses/tweets: ' + error.message);
-		process.exit(1);
-	});
 	t.end();
 });
