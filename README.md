@@ -26,13 +26,34 @@ For the latest developer version, see [Developer Install](#developer-install).
 
 ## Usage
 
-It is recommended to use 
+It is recommended to use a `.env` file at the root of your project directory with the following contents:
+
+* Obtain the keys below from https://apps.twitter.com/
+* `TWITTER_CONSUMER_KEY`:
+* `TWITTER_CONSUMER_SECRET`:
+*` TWITTER_ACCESS_TOKEN_KEY`:
+* `TWITTER_ACCESS_TOKEN_SECRET`=***
+
+```
+TWITTER_CONSUMER_KEY=***
+TWITTER_CONSUMER_SECRET=***
+TWITTER_ACCESS_TOKEN_KEY=***
+TWITTER_ACCESS_TOKEN_SECRET=***
+```
+
+The environmental variables defined above can then be loaded into your script by using [dotenv](https://www.npmjs.com/package/dotenv) (`npm install --save dotenv`):
+
+```
+require('dotenv').config();
+```
+
+See [Documentation](https://rrwen.github.io/twitter2return) for more details.
+
+### REST API
 
 ```
 var twitter2return = require('twitter2return');
 ```
-
-See [Documentation](https://rrwen.github.io/twitter2return) for more details.
 
 ## Contributions
 
