@@ -31,7 +31,7 @@ It is recommended to use a `.env` file at the root of your project directory wit
 * Obtain the keys below from https://apps.twitter.com/
 * `TWITTER_CONSUMER_KEY`: Consumer key (API Key)
 * `TWITTER_CONSUMER_SECRET`: Consumer secret (API secret)
-*` TWITTER_ACCESS_TOKEN_KEY`: Access token
+* ` TWITTER_ACCESS_TOKEN_KEY`: Access token
 * `TWITTER_ACCESS_TOKEN_SECRET`: Access token secret
 
 ```
