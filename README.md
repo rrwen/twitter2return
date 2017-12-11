@@ -41,7 +41,7 @@ TWITTER_ACCESS_TOKEN_KEY=***
 TWITTER_ACCESS_TOKEN_SECRET=***
 ```
 
-The environmental variables defined above can then be loaded into your script by using [dotenv](https://www.npmjs.com/package/dotenv) (`npm install --save dotenv`):
+The `.env` file above can be loaded using [dotenv](https://www.npmjs.com/package/dotenv) (`npm install --save dotenv`):
 
 ```
 require('dotenv').config();
