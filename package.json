@@ -4,9 +4,7 @@
   "description": "Module for extracting Twitter data using option objects",
   "main": "index.js",
   "scripts": {
-    "coverage": "istanbul cover node_modules/tape/bin/tape tests/test.js && cat ./coverage/lcov.info | coveralls",
     "docs": "documentation build */**.js -f html -o docs",
-    "istanbul": "istanbul cover node_modules/tape/bin/tape tests/test.js",
     "test": "node ./tests/test.js"
   },
   "directories": {
@@ -22,13 +20,6 @@
     "url": "https://github.com/rrwen/twitter2return/issues"
   },
   "homepage": "https://github.com/rrwen/twitter2return#readme",
-  "devDependencies": {
-    "coveralls": "^3.0.0",
-    "documentation": "^5.3.3",
-    "istanbul": "^0.4.5",
-    "moment": "^2.19.1",
-    "tape": "^4.8.0"
-  },
   "keywords": [
     "twitter",
     "data",
@@ -54,5 +45,11 @@
   "dependencies": {
     "jsonata": "^1.4.1",
     "twitter": "^1.7.1"
+  },
+  "devDependencies": {
+    "documentation": "^5.3.3",
+    "dotenv": "^4.0.0",
+    "moment": "^2.19.1",
+    "tape": "^4.8.0"
   }
 }

@@ -9,7 +9,6 @@ Module for extracting Twitter data using option objects
 
 [![npm version](https://badge.fury.io/js/twitter2return.svg)](https://badge.fury.io/js/twitter2return)
 [![Build Status](https://travis-ci.org/rrwen/twitter2return.svg?branch=master)](https://travis-ci.org/rrwen/twitter2return)
-[![Coverage Status](https://coveralls.io/repos/github/rrwen/twitter2return/badge.svg?branch=master)](https://coveralls.io/github/rrwen/twitter2return?branch=master)
 [![npm](https://img.shields.io/npm/dt/twitter2return.svg)](https://www.npmjs.com/package/twitter2return)
 [![GitHub license](https://img.shields.io/github/license/rrwen/twitter2return.svg)](https://github.com/rrwen/twitter2return/blob/master/LICENSE)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/rrwen/twitter2return.svg?style=social)](https://twitter.com/intent/tweet?text=Module%20for%20extracting%20Twitter%20data%20using%20option%20objects:%20https%3A%2F%2Fgithub.com%2Frrwen%2Ftwitter2return%20%23nodejs%20%23npm)
@@ -27,7 +26,7 @@ For the latest developer version, see [Developer Install](#developer-install).
 
 ## Usage
 
-An example usage of twitter2return:
+It is recommended to use 
 
 ```
 var twitter2return = require('twitter2return');
@@ -110,7 +109,7 @@ npm install
 1. Clone into current path `git clone https://github.com/rrwen/twitter2return`
 2. Enter into folder `cd twitter2return`
 3. Ensure [devDependencies](https://docs.npmjs.com/files/package.json#devdependencies) are installed and available
-4. Run tests
+4. Run tests with a `.env` file (see [tests/README.md](tests/README.md))
 5. Results are saved to [tests/log](tests/log) with each file corresponding to a version tested
 
 ```
@@ -143,7 +142,7 @@ git push
 ### Upload to npm
 
 1. Update the version in `package.json`
-2. Run tests and check for OK status
+2. Run tests and check for OK status  (see [tests/README.md](tests/README.md))
 3. Generate documentation
 4. Login to npm
 5. Publish to npm
@@ -157,14 +156,15 @@ npm publish
 
 ### Implementation
 
-A description of the overall implementation of twitter2return.
+The module [twitter2return](https://www.npmjs.com/package/twitter2return) uses the following [npm](https://www.npmjs.com/) packages for its implementation:
+
+npm | Purpose
+--- | ---
+[twitter](https://www.npmjs.com/package/twitter) | Connections to the Twitter API REST and Streaming Application Programming Interfaces (APIs)
+[jsonata](https://www.npmjs.com/package/jsonata) | Query language to filter Twitter JSON data
 
 ```
-component   <-- detail
+twitter   <-- Extract Twitter data from API
     |
-component   <-- detail
-    |
-component   <-- detail
-    |
-component   <-- detail
+jsonata   <-- Filter Twitter JSON data
 ```
