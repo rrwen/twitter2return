@@ -29,10 +29,10 @@ For the latest developer version, see [Developer Install](#developer-install).
 It is recommended to use a `.env` file at the root of your project directory with the following contents:
 
 * Obtain the keys below from https://apps.twitter.com/
-* `TWITTER_CONSUMER_KEY`:
-* `TWITTER_CONSUMER_SECRET`:
-*` TWITTER_ACCESS_TOKEN_KEY`:
-* `TWITTER_ACCESS_TOKEN_SECRET`=***
+* `TWITTER_CONSUMER_KEY`: Consumer key (API Key)
+* `TWITTER_CONSUMER_SECRET`: Consumer secret (API secret)
+*` TWITTER_ACCESS_TOKEN_KEY`: Access token
+* `TWITTER_ACCESS_TOKEN_SECRET`: Access token secret
 
 ```
 TWITTER_CONSUMER_KEY=***
@@ -52,7 +52,59 @@ See [Documentation](https://rrwen.github.io/twitter2return) for more details.
 ### REST API
 
 ```
+require('dotenv').config();
+
 var twitter2return = require('twitter2return');
+
+// (options_twitter_connection) Twitter API connection keys
+options.twitter.connection =  {
+	consumer_key: '***', // process.env.TWITTER_CONSUMER_KEY
+	consumer_secret: '***', // process.env.TWITTER_CONSUMER_SECRET
+	access_token_key: '***', // process.env.TWITTER_ACCESS_TOKEN_KEY
+	access_token_secret: '***' // process.env.TWITTER_ACCESS_TOKEN_SECRET
+};
+
+// (options_twitter_rest) Search for keyword 'twitter' in path 'GET search/tweets'
+options.twitter.method = 'get'; // get, post, or stream
+options.twitter.path = 'search/tweets'; // api path
+options.twitter.params = {q: 'twitter'}; // query tweets
+
+// (options_jsonata) Filter for statuses array using jsonata
+options.jsonata = 'statuses';
+
+// (twitter2return_rest) Query tweets using REST API
+twitter2return(options)
+	.then(data => {
+		console.log(data);
+	}).catch(err => {
+		console.error(err.message);
+	});
+
+```
+
+### Stream API
+
+```
+require('dotenv').config();
+
+var twitter2return = require('twitter2return');
+
+// (options_twitter_connection) Track keyword 'twitter' in path 'POST statuses/filter'
+options.twitter.method = 'stream'; // get, post, or stream
+options.twitter.path = 'statuses/filter'; // api path
+options.twitter.params = {track: 'twitter'}; // query tweets
+
+// (options_twitter_stream) Log the tweets when received
+options.twitter.stream = function(err, data) {
+	if (err) {console.error(err)};
+	console.log(data.twitter.tweets);
+};
+
+// (twitter2return_stream) Stream tweets
+var stream = twitter2return(options);
+stream.on('error', function(error) {
+	console.error(error.message);
+});
 ```
 
 ## Contributions
