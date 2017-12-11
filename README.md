@@ -43,7 +43,7 @@ TWITTER_ACCESS_TOKEN_SECRET=***
 
 The `.env` file above can be loaded using [dotenv](https://www.npmjs.com/package/dotenv) (`npm install --save dotenv`):
 
-```
+```javascript
 require('dotenv').config();
 ```
 
@@ -58,7 +58,7 @@ See [Documentation](https://rrwen.github.io/twitter2return) for more details.
 5. Apply a [jsonata](https://www.npmjs.com/package/jsonata) filter for `statuses` key only
 6. Execute `twitter2return` with the REST API `options`
 
-```
+```javascript
 require('dotenv').config();
 
 var twitter2return = require('twitter2return');
@@ -98,7 +98,7 @@ twitter2return(options)
 5. Log the tweets when they are received
 6. Execute `twitter2return` with the Stream API `options`
 
-```
+```javascript
 require('dotenv').config();
 
 var twitter2return = require('twitter2return');
