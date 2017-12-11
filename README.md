@@ -51,6 +51,13 @@ See [Documentation](https://rrwen.github.io/twitter2return) for more details.
 
 ### REST API
 
+1. Load `.env` file variables
+2. Load `twitter2return`
+3. Optionally define Twitter API keys
+4. Search keyword `twitter` from `GET search/tweets`
+5. Apply a [jsonata](https://www.npmjs.com/package/jsonata) filter for `statuses` key only
+6. Execute `twitter2return` with the REST API `options`
+
 ```
 require('dotenv').config();
 
@@ -84,10 +91,25 @@ twitter2return(options)
 
 ### Stream API
 
+1. Load `.env` file variables
+2. Load `twitter2return`
+3. Optionally define Twitter API keys
+4. Track keyword `twitter` from `POST statuses/filter`
+5. Log the tweets when they are received
+6. Execute `twitter2return` with the Stream API `options`
+
 ```
 require('dotenv').config();
 
 var twitter2return = require('twitter2return');
+
+// (options_twitter_connection) Twitter API connection keys
+options.twitter.connection =  {
+	consumer_key: '***', // process.env.TWITTER_CONSUMER_KEY
+	consumer_secret: '***', // process.env.TWITTER_CONSUMER_SECRET
+	access_token_key: '***', // process.env.TWITTER_ACCESS_TOKEN_KEY
+	access_token_secret: '***' // process.env.TWITTER_ACCESS_TOKEN_SECRET
+};
 
 // (options_twitter_connection) Track keyword 'twitter' in path 'POST statuses/filter'
 options.twitter.method = 'stream'; // get, post, or stream
