@@ -39,9 +39,6 @@ test('Tests for ' + json.name + ' (' + json.version + ')', t => {
 	options = {twitter: {}};
 	
 	// (test_rest) Search for keyword 'twitter' in path 'GET search/tweets'
-	options.twitter.method = 'get';
-	options.twitter.path = 'search/tweets';
-	options.twitter.params = {q: 'twitter'};
 	twitter2return(options)
 		.then(data => {
 			t.pass('(MAIN) REST GET search/tweets');
@@ -62,7 +59,7 @@ test('Tests for ' + json.name + ' (' + json.version + ')', t => {
 			// (test_stream) Track keyword 'twitter' in path 'POST statuses/filter'
 			options.twitter.method = 'stream';
 			options.twitter.path = 'statuses/filter';
-			options.twitter.params = {track: 'twitter'};
+			options.twitter.params = '{"track": "twitter"}';
 			options.twitter.stream = function(err, data) {
 				if (err) {console.error(err)};
 				t.pass('(MAIN) Stream POST statuses/tweets');
