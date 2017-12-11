@@ -4,7 +4,9 @@
   "description": "Module for extracting Twitter data using option objects",
   "main": "index.js",
   "scripts": {
+    "coverage": "istanbul cover node_modules/tape/bin/tape tests/test.js && cat ./coverage/lcov.info | coveralls",
     "docs": "documentation build */**.js -f html -o docs",
+	"istanbul": "istanbul cover node_modules/tape/bin/tape tests/test.js",
     "test": "node ./tests/test.js"
   },
   "directories": {
