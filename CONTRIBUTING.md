@@ -14,7 +14,7 @@ A template of a report contribution is provided in [ISSUE_TEMPLATE.md](ISSUE_TEM
 
 ### Code Contributions
 
-Code contributions are submitted via [pull requests](https://help.github.com/articles/about-pull-requests/):
+Code contributions are submitted via [pull requests](https://github.com/rrwen/twitter2return/pulls):
 
 1. Ensure that you pass the [Tests](#tests)
 2. Create a new [pull request](https://github.com/rrwen/twitter2return/pulls)
