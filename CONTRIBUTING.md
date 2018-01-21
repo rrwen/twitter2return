@@ -1,18 +1,3 @@
-# twitter2mongodb-cli
-
-Richard Wen  
-rrwen.dev@gmail.com  
-
-Command line tool for extracting Twitter data to MongoDB databases
-
-[![npm version](https://badge.fury.io/js/twitter2mongodb-cli.svg)](https://badge.fury.io/js/twitter2mongodb-cli)
-[![Build Status](https://travis-ci.org/rrwen/twitter2mongodb-cli.svg?branch=master)](https://travis-ci.org/rrwen/twitter2mongodb-cli)
-[![npm](https://img.shields.io/npm/dt/twitter2mongodb-cli.svg)](https://www.npmjs.com/package/twitter2mongodb-cli)
-[![GitHub license](https://img.shields.io/github/license/rrwen/twitter2mongodb-cli.svg)](https://github.com/rrwen/twitter2mongodb-cli/blob/master/LICENSE)
-[![Donarbox Donate](https://img.shields.io/badge/donate-Donarbox-yellow.svg)](https://donorbox.org/rrwen)
-[![PayPal Donate](https://img.shields.io/badge/donate-PayPal-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NQNSAHK5X46D2)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/rrwen/twitter2mongodb-cli.svg?style=social)](https://twitter.com/intent/tweet?text=Command%20line%20tool%20for%20extracting%20Twitter%20data%20to%20MongoDB%20databases:%20https%3A%2F%2Fgithub.com%2Frrwen%2Ftwitter2mongodb-cli%20%23nodejs%20%23npm)
-
 ## Contributions
 
 ### Report Contributions
