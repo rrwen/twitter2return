@@ -18,9 +18,11 @@ Module for extracting Twitter data using option objects
 
 1. Install [Node.js](https://nodejs.org/en/)
 2. Install [twitter2return](https://www.npmjs.com/package/twitter2return) via `npm`
+3. **Recommended**: Install [dotenv](https://www.npmjs.com/package/dotenv) via `npm`
 
 ```
 npm install --save twitter2return
+npm install --save dotenv
 ```
 
 For the latest developer version, see [Developer Install](#developer-install).
@@ -42,7 +44,7 @@ TWITTER_ACCESS_TOKEN_KEY=***
 TWITTER_ACCESS_TOKEN_SECRET=***
 ```
 
-The `.env` file above can be loaded using [dotenv](https://www.npmjs.com/package/dotenv) (`npm install --save dotenv`):
+The `.env` file above can be loaded using [dotenv](https://www.npmjs.com/package/dotenv):
 
 ```javascript
 require('dotenv').config();
@@ -67,14 +69,6 @@ var twitter2return = require('twitter2return');
 
 // (options) Initialize options object
 var options = {twitter: {}};
-
-// (options_twitter_connection) Twitter API connection keys
-options.twitter.connection =  {
-	consumer_key: '***', // process.env.TWITTER_CONSUMER_KEY
-	consumer_secret: '***', // process.env.TWITTER_CONSUMER_SECRET
-	access_token_key: '***', // process.env.TWITTER_ACCESS_TOKEN_KEY
-	access_token_secret: '***' // process.env.TWITTER_ACCESS_TOKEN_SECRET
-};
 
 // (options_twitter_rest) Search for keyword 'twitter' in path 'GET search/tweets'
 options.twitter.method = 'get'; // get, post, or stream
@@ -112,14 +106,6 @@ var twitter2return = require('twitter2return');
 // (options) Initialize options object
 var options = {twitter: {}};
 
-// (options_twitter_connection) Twitter API connection keys
-options.twitter.connection =  {
-	consumer_key: '***', // process.env.TWITTER_CONSUMER_KEY
-	consumer_secret: '***', // process.env.TWITTER_CONSUMER_SECRET
-	access_token_key: '***', // process.env.TWITTER_ACCESS_TOKEN_KEY
-	access_token_secret: '***' // process.env.TWITTER_ACCESS_TOKEN_SECRET
-};
-
 // (options_twitter_connection) Track keyword 'twitter' in path 'POST statuses/filter'
 options.twitter.method = 'stream'; // get, post, or stream
 options.twitter.path = 'statuses/filter'; // api path
@@ -140,51 +126,10 @@ stream.on('error', function(error) {
 
 ## Contributions
 
-### Report Contributions
+1. Reports for issues and suggestions can be made using the [issue submission](https://github.com/rrwen/twitter2mongodb-cli/issues) interface.
+2. Code contributions are submitted via [pull requests](https://help.github.com/articles/about-pull-requests/)
 
-Reports for issues and suggestions can be made using the [issue submission](https://github.com/rrwen/twitter2return/issues) interface.
-
-When possible, ensure that your submission is:
-
-* **Descriptive**: has informative title, explanations, and screenshots
-* **Specific**: has details of environment (such as operating system and hardware) and software used
-* **Reproducible**: has steps, code, and examples to reproduce the issue
-
-### Code Contributions
-
-Code contributions are submitted via [pull requests](https://help.github.com/articles/about-pull-requests/):
-
-1. Ensure that you pass the [Tests](#tests)
-2. Create a new [pull request](https://github.com/rrwen/twitter2return/pulls)
-3. Provide an explanation of the changes
-
-A template of the code contribution explanation is provided below:
-
-```
-## Purpose
-
-The purpose can mention goals that include fixes to bugs, addition of features, and other improvements, etc.
-
-## Description
-
-The description is a short summary of the changes made such as improved speeds or features, and implementation details.
-
-## Changes
-
-The changes are a list of general edits made to the files and their respective components.
-* `file_path1`:
-	* `function_module_etc`: changed loop to map
-	* `function_module_etc`: changed variable value
-* `file_path2`:
-	* `function_module_etc`: changed loop to map
-	* `function_module_etc`: changed variable value
-
-## Notes
-
-The notes provide any additional text that do not fit into the above sections.
-```
-
-For more information, see [Developer Install](#developer-install) and [Implementation](#implementation).
+See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 
 ## Developer Notes
 

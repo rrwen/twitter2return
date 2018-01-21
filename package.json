@@ -1,6 +1,6 @@
 {
   "name": "twitter2return",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Module for extracting Twitter data using option objects",
   "main": "index.js",
   "scripts": {
