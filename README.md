@@ -128,7 +128,7 @@ stream.on('error', function(error) {
 
 ## Contributions
 
-1. Reports for issues and suggestions can be made using the [issue submission](https://github.com/rrwen/twitter2mongodb-cli/issues) interface.
+1. Reports for issues and suggestions can be made using the [issue submission](https://github.com/rrwen/twitter2return/issues) interface.
 2. Code contributions are submitted via [pull requests](https://help.github.com/articles/about-pull-requests/)
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.

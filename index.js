@@ -29,7 +29,7 @@ var Twitter = require('twitter');
  * * `err` is the {@link Error} object (unused in this case)
  * * `data` is in the form of `{twitter: {stream: stream, tweets: Object}}`
  * * `data.twitter.stream` is the {@link https://www.npmjs.com/package/twitter#streaming-api twitter stream}
- * * `data.twitter.tweets` are  the {@link https://www.npmjs.com/package/twitter tweets} in JSON format or an empty JSON if undefined
+ * * `data.twitter.tweets` are  the {@link https://www.npmjs.com/package/twitter tweets} in JSON format
  *
  * @param {Object} [options.twitter.connection={}] Twitter API connection credentials:  
  *
@@ -65,7 +65,7 @@ var Twitter = require('twitter');
  * * Return a {@link Promise} object that resolves a `data` object in the form `{twitter: {client: ..., tweets: ...}}`  
  *
  * * `data.twitter.client`: contains a {@link https://www.npmjs.com/package/twitter Twitter client} object created from `options.twitter.connection`  
- * * `data.twitter.tweets`: contains the {@link https://www.npmjs.com/package/twitter tweets} in JSON format or an empty JSON if undefined
+ * * `data.twitter.tweets`: contains the {@link https://www.npmjs.com/package/twitter tweets} in JSON format
  *
  * @example
  * var twitter2return = require('twitter2return');
@@ -151,7 +151,6 @@ module.exports = options => {
 	if (options.twitter.method == 'stream') {
 		var stream = client[options.twitter.method](options.twitter.path, options.twitter.params);
 		stream.on('data', function(tweets) {
-			tweets = tweets || {};
 			
 			// (twitter_stream_jsonata) Filter tweets using jsonata syntax
 			if (options.jsonata) {
@@ -168,7 +167,6 @@ module.exports = options => {
 		// (twitter_rest) REST API
 		return client[options.twitter.method](options.twitter.path, options.twitter.params)
 			.then(tweets => {
-				tweets = tweets || {};
 				
 				// (twitter_rest_jsonata) Filter tweets using jsonata syntax
 				if (options.jsonata) {

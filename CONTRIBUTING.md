@@ -2,7 +2,7 @@
 
 ### Report Contributions
 
-Reports for issues and suggestions can be made using the [issue submission](https://github.com/rrwen/twitter2mongodb-cli/issues) interface.
+Reports for issues and suggestions can be made using the [issue submission](https://github.com/rrwen/twitter2return/issues) interface.
 
 When possible, ensure that your submission is:
 
@@ -17,7 +17,7 @@ A template of a report contribution is provided in [ISSUE_TEMPLATE.md](ISSUE_TEM
 Code contributions are submitted via [pull requests](https://help.github.com/articles/about-pull-requests/):
 
 1. Ensure that you pass the [Tests](#tests)
-2. Create a new [pull request](https://github.com/rrwen/twitter2mongodb-cli/pulls)
+2. Create a new [pull request](https://github.com/rrwen/twitter2return/pulls)
 3. Provide an explanation of the changes
 
 A template of a code contribution is provided in [PULL_REQUEST_TEMPLATE.md](PULL_REQUEST_TEMPLATE.md).  
